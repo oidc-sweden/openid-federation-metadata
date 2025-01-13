@@ -1,0 +1,16 @@
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/JWKUtils.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/MetadataUtils.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/entities/AbstractOidcFedMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/entities/AuthorizationServerMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/entities/BasicASMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/entities/BasicClientMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/entities/ClientMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/entities/ExtendedMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/entities/FederationEntityMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/entities/OpMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/entities/RelyingPartyMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/entities/ResourceServerMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/lang/LanguageObject.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/lang/LanguageTaggedJson.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/lang/OidcLangJsonSerializer.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/src/main/java/se/oidc/oidfed/md/package-info.java

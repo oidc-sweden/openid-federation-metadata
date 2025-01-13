@@ -1,0 +1,11 @@
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/credentialissuer/AbstractCredentialConfiguration.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/credentialissuer/BatchCredentialIssuance.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/credentialissuer/Claim.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/credentialissuer/CredentialIssuerMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/credentialissuer/CredentialResponseEncryption.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/credentialissuer/Display.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/credentialissuer/IsoMdlCredentialConfiguration.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/credentialissuer/JsonLdCredentialConfiguration.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/credentialissuer/SdJwtCredentialConfiguration.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/credentialissuer/WalletOAuthClientMetadata.java
+/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/wallet-entities/src/main/java/se/oidc/oidfed/md/wallet/package-info.java

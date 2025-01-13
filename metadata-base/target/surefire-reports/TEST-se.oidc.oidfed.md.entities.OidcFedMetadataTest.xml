@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="se.oidc.oidfed.md.entities.OidcFedMetadataTest" time="0.605" tests="6" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/target/test-classes:/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/target/classes:/Users/stefan/.m2/repository/org/bouncycastle/bcpkix-jdk18on/1.79/bcpkix-jdk18on-1.79.jar:/Users/stefan/.m2/repository/org/bouncycastle/bcprov-jdk18on/1.79/bcprov-jdk18on-1.79.jar:/Users/stefan/.m2/repository/org/bouncycastle/bcutil-jdk18on/1.79/bcutil-jdk18on-1.79.jar:/Users/stefan/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.2/jackson-annotations-2.18.2.jar:/Users/stefan/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.2/jackson-core-2.18.2.jar:/Users/stefan/.m2/repository/com/nimbusds/nimbus-jose-jwt/10.0.1/nimbus-jose-jwt-10.0.1.jar:/Users/stefan/.m2/repository/org/apache/commons/commons-lang3/3.17.0/commons-lang3-3.17.0.jar:/Users/stefan/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/Users/stefan/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.2/jackson-databind-2.18.2.jar:/Users/stefan/.m2/repository/jakarta/annotation/jakarta.annotation-api/3.0.0/jakarta.annotation-api-3.0.0.jar:/Users/stefan/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/Users/stefan/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar:/Users/stefan/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.3/junit-jupiter-5.11.3.jar:/Users/stefan/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.3/junit-jupiter-api-5.11.3.jar:/Users/stefan/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/stefan/.m2/repository/org/junit/platform/junit-platform-commons/1.11.3/junit-platform-commons-1.11.3.jar:/Users/stefan/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/stefan/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.3/junit-jupiter-params-5.11.3.jar:/Users/stefan/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.3/junit-jupiter-engine-5.11.3.jar:/Users/stefan/.m2/repository/org/junit/platform/junit-platform-engine/1.11.3/junit-platform-engine-1.11.3.jar:/Users/stefan/.m2/repository/org/mockito/mockito-core/5.14.2/mockito-core-5.14.2.jar:/Users/stefan/.m2/repository/net/bytebuddy/byte-buddy/1.15.4/byte-buddy-1.15.4.jar:/Users/stefan/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.4/byte-buddy-agent-1.15.4.jar:/Users/stefan/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/stefan/.m2/repository/org/slf4j/slf4j-simple/2.0.16/slf4j-simple-2.0.16.jar:/Users/stefan/.m2/repository/se/swedenconnect/security/credentials-support/2.0.1/credentials-support-2.0.1.jar:/Users/stefan/.m2/repository/org/cryptacular/cryptacular/1.2.7/cryptacular-1.2.7.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="user.timezone" value="Europe/Stockholm"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="SE"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/target/surefire/surefirebooter-20250112093045810_3.jar /Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/target/surefire 2025-01-12T09-30-45_750-jvmRun1 surefire-20250112093045810_1tmp surefire_0-20250112093045810_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/target/test-classes:/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/target/classes:/Users/stefan/.m2/repository/org/bouncycastle/bcpkix-jdk18on/1.79/bcpkix-jdk18on-1.79.jar:/Users/stefan/.m2/repository/org/bouncycastle/bcprov-jdk18on/1.79/bcprov-jdk18on-1.79.jar:/Users/stefan/.m2/repository/org/bouncycastle/bcutil-jdk18on/1.79/bcutil-jdk18on-1.79.jar:/Users/stefan/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.2/jackson-annotations-2.18.2.jar:/Users/stefan/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.2/jackson-core-2.18.2.jar:/Users/stefan/.m2/repository/com/nimbusds/nimbus-jose-jwt/10.0.1/nimbus-jose-jwt-10.0.1.jar:/Users/stefan/.m2/repository/org/apache/commons/commons-lang3/3.17.0/commons-lang3-3.17.0.jar:/Users/stefan/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/Users/stefan/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.2/jackson-databind-2.18.2.jar:/Users/stefan/.m2/repository/jakarta/annotation/jakarta.annotation-api/3.0.0/jakarta.annotation-api-3.0.0.jar:/Users/stefan/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/Users/stefan/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar:/Users/stefan/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.3/junit-jupiter-5.11.3.jar:/Users/stefan/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.3/junit-jupiter-api-5.11.3.jar:/Users/stefan/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/stefan/.m2/repository/org/junit/platform/junit-platform-commons/1.11.3/junit-platform-commons-1.11.3.jar:/Users/stefan/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/stefan/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.3/junit-jupiter-params-5.11.3.jar:/Users/stefan/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.3/junit-jupiter-engine-5.11.3.jar:/Users/stefan/.m2/repository/org/junit/platform/junit-platform-engine/1.11.3/junit-platform-engine-1.11.3.jar:/Users/stefan/.m2/repository/org/mockito/mockito-core/5.14.2/mockito-core-5.14.2.jar:/Users/stefan/.m2/repository/net/bytebuddy/byte-buddy/1.15.4/byte-buddy-1.15.4.jar:/Users/stefan/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.4/byte-buddy-agent-1.15.4.jar:/Users/stefan/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/stefan/.m2/repository/org/slf4j/slf4j-simple/2.0.16/slf4j-simple-2.0.16.jar:/Users/stefan/.m2/repository/se/swedenconnect/security/credentials-support/2.0.1/credentials-support-2.0.1.jar:/Users/stefan/.m2/repository/org/cryptacular/cryptacular/1.2.7/cryptacular-1.2.7.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/stefan"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-01-16"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base/target/surefire/surefirebooter-20250112093045810_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.2"/>
+    <property name="user.name" value="stefan"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.6.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/stefan/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/cc/_z23jycs3bd4bt880vhnr8700000gn/T/"/>
+    <property name="java.version" value="21.0.2"/>
+    <property name="user.dir" value="/Users/stefan/GitHub/oidc-sweden/openid-federation-metadata/metadata-base"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/stefan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="21.0.2"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="testOpMetadata" classname="se.oidc.oidfed.md.entities.OidcFedMetadataTest" time="0.244"/>
+  <testcase name="testAsMetadta" classname="se.oidc.oidfed.md.entities.OidcFedMetadataTest" time="0.002"/>
+  <testcase name="testClientMetadata" classname="se.oidc.oidfed.md.entities.OidcFedMetadataTest" time="0.002"/>
+  <testcase name="resourceServerMetadataTest" classname="se.oidc.oidfed.md.entities.OidcFedMetadataTest" time="0.305">
+    <system-err><![CDATA[[main] INFO se.oidc.oidfed.md.entities.OidcFedMetadataTest - Content of ResourceServerMetadata
+{
+  "homepage_uri" : "https://example.com/homepage",
+  "jwks" : {
+    "keys" : [ {
+      "kty" : "EC",
+      "x5t#S256" : "gTUo3DlACUyS0OEz99auZLYDeGhwsJt2f2tB200CEKw",
+      "nbf" : 1697813357,
+      "crv" : "P-521",
+      "kid" : "1697813357",
+      "x5c" : [ "MIIBnzCCAQGgAwIBAgIEZTKTbTAKBggqhkjOPQQDAjAUMRIwEAYDVQQDDAlUZXN0IHA1MjEwHhcNMjMxMDIwMTQ0OTE3WhcNNDQxMDE5MTQ0OTE3WjAUMRIwEAYDVQQDDAlUZXN0IHA1MjEwgZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAEcPKlvJNGbOfWdkO3mDpPza9EJE5Sw8FK7dKPjic9LL8HKOwyNVFpcB7miHmIip8VUjwIKMt6FwmWnpRzmHZ9z4AFAcyW/hopqMVUkaS9u8YlN94PwV5YYO5CylW8nyMiwzv/TddVEi0VGekTFJyn9LQejhbwECd0ZzolhPMJ6gSJgsjAKBggqhkjOPQQDAgOBiwAwgYcCQgFyz0D6vn7Vrkk+15hdXty7XYBP5rUUgKsKdJLZ6KW99KX9prCoFE83swdH18LzNsOSvoMIGn1F2HPgJlF1uAk+jgJBYqvFBsW/sonjcm/wSkh3A4Rqo91fN7hRZyvqinpdMl6ZUzLi55XlygDTCOMFQ7QUtYDcMSTQOoNjUw6eEi/xQEQ=" ],
+      "x" : "ARw8qW8k0Zs59Z2Q7eYOk_Nr0QkTlLDwUrt0o-OJz0svwco7DI1UWlwHuaIeYiKnxVSPAgoy3oXCZaelHOYdn3Pg",
+      "y" : "AUBzJb-GimoxVSRpL27xiU33g_BXlhg7kLKVbyfIyLDO_9N11USLRUZ6RMUnKf0tB6OFvAQJ3RnOiWE8wnqBImCy",
+      "exp" : 2360501357
+    } ]
+  },
+  "logo_uri" : "https://example.com/logo",
+  "jwks_uri" : "https://example.com/jwks-uri",
+  "logo_uri#en" : "https://example.com/en-logo",
+  "signed_jwks_uri" : "https://example.com/signed-jwks-uri",
+  "organization_name" : "Organization",
+  "contacts" : [ "nisse@example.com", "jd@example.com" ],
+  "organization_name#en" : "English Organization name",
+  "policy_uri" : "https://example.com/policy"
+}
+[main] INFO se.oidc.oidfed.md.entities.OidcFedMetadataTest - Parsing metadata JSON object
+[main] INFO se.oidc.oidfed.md.entities.OidcFedMetadataTest - Content of ResourceServerMetadata
+{
+  "homepage_uri" : "https://example.com/homepage",
+  "jwks" : {
+    "keys" : [ {
+      "kty" : "RSA",
+      "x5t#S256" : "Ya95noxrv4unmZNbswwsjOQWnh-qRvsqzNYyPziVDsQ",
+      "nbf" : 1697813415,
+      "e" : "AQAB",
+      "kid" : "1697813415",
+      "x5c" : [ "MIIDqjCCAhKgAwIBAgIEZTKTpzANBgkqhkiG9w0BAQsFADAXMRUwEwYDVQQDDAxUZXN0IHJzYTMwNzIwHhcNMjMxMDIwMTQ1MDE1WhcNNDQxMDE5MTQ1MDE1WjAXMRUwEwYDVQQDDAxUZXN0IHJzYTMwNzIwggGiMA0GCSqGSIb3DQEBAQUAA4IBjwAwggGKAoIBgQCWGnJrzWZrg4YVObaAk4EjP3okXBnKIdjdL0XuljGb7ub/+cTooahs1HjLQ2gwM12xu/oug85J/xrCD1EARfhVY65oAa6GNYeT6XU14170kCWX6X3Q3R3+uErjZUufgGWYKL0XUzwEHVBFhVm8qkNX9wZVDIbyrGVdZDrI9eFNCtoo9ls4bXDhjrtfQsjXaFG780GVbBDbsDHWJs4UleA3+chrJmXEBd+L6Vve/rW/bAMVEH/WBnvcaeX7ZePYt8IhiJMcQAoPr57v76GDrdUhH5YlH9DSiBXT6djEatc7bNmXxATZj8oDsSPVz4mZuMR10G/c8m/NJMMRDLOLY9O4fr5L19OmPPzpcYQK+IVmAeOPYYKlMDtoanAPPRnDRnCQQJISnwmkka4AFYPFyfgOLTE7INWQ5OxURe2jhbeELhhfBstj3Z7c7lFQweSjCHJE2DiyBYYkea5RG2KROnS0JkeVWTD7BrtOBC1+CnUx6r0HhmLj5LCePbbdbfK2WHsCAwEAATANBgkqhkiG9w0BAQsFAAOCAYEAkRxrRZZB0uEm4CPu0WfUbq77fqU5oTJLZdp/nFHAxhQ6Z4WSNwGnqUR4gR8+7QH1E1Amd+rVuCCOLA5Qb+vuvZWj14485sNVRZo6Pc39U+dcOWNR+tQicluIi60eAa1TmcTcqMjm2dKTuSavWeyfmufDof8pl1FiMHbmacaXS0rJt/d4f9HahTpMP09ADKy2pqZ/2mWscnD3ak7659tz8nJhJ4WTQrPWkxNtSaum+zjGVoxDS74oMLk4XRJHQTuDn0+neDKqGJFa6FTZtaMO6gjGL+vuaYwZT52RgyVrR+8dX4ls5L8qNcYHnOXc0NNXU+45WBj+7jdUK9tkDuBMPpKyaCuyuhGItbjhDOBPFGE9D8NbvocyXQ5QKi6tZ6B/WRHm3oYZVfoWeX2PrLr4llm4p56TAApI6cX3sq2SIKnGNoRK+0LHCV3ib4TuSZJ+NYWKpndp92tYzGZqXdU/dkblK01xOSEa5+ckogy7nTueNJkq0zQqRmOETsMLSnBc" ],
+      "exp" : 2360501415,
+      "n" : "lhpya81ma4OGFTm2gJOBIz96JFwZyiHY3S9F7pYxm-7m__nE6KGobNR4y0NoMDNdsbv6LoPOSf8awg9RAEX4VWOuaAGuhjWHk-l1NeNe9JAll-l90N0d_rhK42VLn4BlmCi9F1M8BB1QRYVZvKpDV_cGVQyG8qxlXWQ6yPXhTQraKPZbOG1w4Y67X0LI12hRu_NBlWwQ27Ax1ibOFJXgN_nIayZlxAXfi-lb3v61v2wDFRB_1gZ73Gnl-2Xj2LfCIYiTHEAKD6-e7--hg63VIR-WJR_Q0ogV0-nYxGrXO2zZl8QE2Y_KA7Ej1c-JmbjEddBv3PJvzSTDEQyzi2PTuH6-S9fTpjz86XGECviFZgHjj2GCpTA7aGpwDz0Zw0ZwkECSEp8JpJGuABWDxcn4Di0xOyDVkOTsVEXto4W3hC4YXwbLY92e3O5RUMHkowhyRNg4sgWGJHmuURtikTp0tCZHlVkw-wa7TgQtfgp1Meq9B4Zi4-Swnj223W3ytlh7"
+    } ]
+  },
+  "logo_uri" : "https://example.com/logo",
+  "jwks_uri" : "https://example.com/jwks-uri",
+  "signed_jwks_uri" : "https://example.com/signed-jwks-uri",
+  "organization_name" : "Organization",
+  "contacts" : [ "nisse@example.com", "jd@example.com" ],
+  "policy_uri" : "https://example.com/policy"
+}
+]]></system-err>
+  </testcase>
+  <testcase name="testRelyingPartyMetadata" classname="se.oidc.oidfed.md.entities.OidcFedMetadataTest" time="0.018">
+    <system-err><![CDATA[[main] INFO se.oidc.oidfed.md.entities.OidcFedMetadataTest - Content of RelyingPartyMetadata
+{
+  "homepage_uri" : "https://example.com/homepage",
+  "token_endpoint_auth_signing_alg" : "alg",
+  "client_name#sv" : "Klientnamn",
+  "client_uri" : "uri",
+  "request_object_encryption_alg" : "alg",
+  "jwks" : {
+    "keys" : [ {
+      "kty" : "EC",
+      "x5t#S256" : "gTUo3DlACUyS0OEz99auZLYDeGhwsJt2f2tB200CEKw",
+      "nbf" : 1697813357,
+      "crv" : "P-521",
+      "kid" : "1697813357",
+      "x5c" : [ "MIIBnzCCAQGgAwIBAgIEZTKTbTAKBggqhkjOPQQDAjAUMRIwEAYDVQQDDAlUZXN0IHA1MjEwHhcNMjMxMDIwMTQ0OTE3WhcNNDQxMDE5MTQ0OTE3WjAUMRIwEAYDVQQDDAlUZXN0IHA1MjEwgZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAEcPKlvJNGbOfWdkO3mDpPza9EJE5Sw8FK7dKPjic9LL8HKOwyNVFpcB7miHmIip8VUjwIKMt6FwmWnpRzmHZ9z4AFAcyW/hopqMVUkaS9u8YlN94PwV5YYO5CylW8nyMiwzv/TddVEi0VGekTFJyn9LQejhbwECd0ZzolhPMJ6gSJgsjAKBggqhkjOPQQDAgOBiwAwgYcCQgFyz0D6vn7Vrkk+15hdXty7XYBP5rUUgKsKdJLZ6KW99KX9prCoFE83swdH18LzNsOSvoMIGn1F2HPgJlF1uAk+jgJBYqvFBsW/sonjcm/wSkh3A4Rqo91fN7hRZyvqinpdMl6ZUzLi55XlygDTCOMFQ7QUtYDcMSTQOoNjUw6eEi/xQEQ=" ],
+      "x" : "ARw8qW8k0Zs59Z2Q7eYOk_Nr0QkTlLDwUrt0o-OJz0svwco7DI1UWlwHuaIeYiKnxVSPAgoy3oXCZaelHOYdn3Pg",
+      "y" : "AUBzJb-GimoxVSRpL27xiU33g_BXlhg7kLKVbyfIyLDO_9N11USLRUZ6RMUnKf0tB6OFvAQJ3RnOiWE8wnqBImCy",
+      "exp" : 2360501357
+    } ]
+  },
+  "default_max_age" : 240,
+  "application_type" : "type",
+  "default_acr_values" : [ "loa3", "loa4" ],
+  "initiate_login_uri" : "uri",
+  "logo_uri" : "https://example.com/logo",
+  "userinfo_encrypted_response_enc" : "alg",
+  "userinfo_encrypted_response_alg" : "alg",
+  "token_endpoint_auth_method" : "private_key_jwt",
+  "userinfo_signed_response_alg" : "alg",
+  "organization_name#en" : "English Organization name",
+  "signed_jwks_uri" : "https://example.com/signed-jwks-uri",
+  "request_object_encryption_enc" : "alg",
+  "client_name" : "Client name",
+  "policy_uri" : "https://example.com/policy",
+  "id_token_signed_response_alg" : "alg",
+  "grant_types" : [ "type1", "type2" ],
+  "redirect_uris" : [ "Redirect URI", "Redirect URI2" ],
+  "organization_name" : "Organization",
+  "id_token_encrypted_response_alg" : "alg",
+  "jwks_uri" : "https://example.com/jwks-uri",
+  "logo_uri#en" : "https://example.com/en-logo",
+  "require_auth_time" : true,
+  "contacts" : [ "nisse@example.com", "jd@example.com" ],
+  "response_types" : [ "Response types" ]
+}
+[main] INFO se.oidc.oidfed.md.entities.OidcFedMetadataTest - Parsing metadata JSON object
+[main] INFO se.oidc.oidfed.md.entities.OidcFedMetadataTest - Content of RelyingPartyMetadata
+{
+  "homepage_uri" : "https://example.com/homepage",
+  "token_endpoint_auth_signing_alg" : "alg",
+  "client_uri" : "uri",
+  "request_object_encryption_alg" : "alg",
+  "jwks" : {
+    "keys" : [ {
+      "kty" : "RSA",
+      "x5t#S256" : "Ya95noxrv4unmZNbswwsjOQWnh-qRvsqzNYyPziVDsQ",
+      "nbf" : 1697813415,
+      "e" : "AQAB",
+      "kid" : "1697813415",
+      "x5c" : [ "MIIDqjCCAhKgAwIBAgIEZTKTpzANBgkqhkiG9w0BAQsFADAXMRUwEwYDVQQDDAxUZXN0IHJzYTMwNzIwHhcNMjMxMDIwMTQ1MDE1WhcNNDQxMDE5MTQ1MDE1WjAXMRUwEwYDVQQDDAxUZXN0IHJzYTMwNzIwggGiMA0GCSqGSIb3DQEBAQUAA4IBjwAwggGKAoIBgQCWGnJrzWZrg4YVObaAk4EjP3okXBnKIdjdL0XuljGb7ub/+cTooahs1HjLQ2gwM12xu/oug85J/xrCD1EARfhVY65oAa6GNYeT6XU14170kCWX6X3Q3R3+uErjZUufgGWYKL0XUzwEHVBFhVm8qkNX9wZVDIbyrGVdZDrI9eFNCtoo9ls4bXDhjrtfQsjXaFG780GVbBDbsDHWJs4UleA3+chrJmXEBd+L6Vve/rW/bAMVEH/WBnvcaeX7ZePYt8IhiJMcQAoPr57v76GDrdUhH5YlH9DSiBXT6djEatc7bNmXxATZj8oDsSPVz4mZuMR10G/c8m/NJMMRDLOLY9O4fr5L19OmPPzpcYQK+IVmAeOPYYKlMDtoanAPPRnDRnCQQJISnwmkka4AFYPFyfgOLTE7INWQ5OxURe2jhbeELhhfBstj3Z7c7lFQweSjCHJE2DiyBYYkea5RG2KROnS0JkeVWTD7BrtOBC1+CnUx6r0HhmLj5LCePbbdbfK2WHsCAwEAATANBgkqhkiG9w0BAQsFAAOCAYEAkRxrRZZB0uEm4CPu0WfUbq77fqU5oTJLZdp/nFHAxhQ6Z4WSNwGnqUR4gR8+7QH1E1Amd+rVuCCOLA5Qb+vuvZWj14485sNVRZo6Pc39U+dcOWNR+tQicluIi60eAa1TmcTcqMjm2dKTuSavWeyfmufDof8pl1FiMHbmacaXS0rJt/d4f9HahTpMP09ADKy2pqZ/2mWscnD3ak7659tz8nJhJ4WTQrPWkxNtSaum+zjGVoxDS74oMLk4XRJHQTuDn0+neDKqGJFa6FTZtaMO6gjGL+vuaYwZT52RgyVrR+8dX4ls5L8qNcYHnOXc0NNXU+45WBj+7jdUK9tkDuBMPpKyaCuyuhGItbjhDOBPFGE9D8NbvocyXQ5QKi6tZ6B/WRHm3oYZVfoWeX2PrLr4llm4p56TAApI6cX3sq2SIKnGNoRK+0LHCV3ib4TuSZJ+NYWKpndp92tYzGZqXdU/dkblK01xOSEa5+ckogy7nTueNJkq0zQqRmOETsMLSnBc" ],
+      "exp" : 2360501415,
+      "n" : "lhpya81ma4OGFTm2gJOBIz96JFwZyiHY3S9F7pYxm-7m__nE6KGobNR4y0NoMDNdsbv6LoPOSf8awg9RAEX4VWOuaAGuhjWHk-l1NeNe9JAll-l90N0d_rhK42VLn4BlmCi9F1M8BB1QRYVZvKpDV_cGVQyG8qxlXWQ6yPXhTQraKPZbOG1w4Y67X0LI12hRu_NBlWwQ27Ax1ibOFJXgN_nIayZlxAXfi-lb3v61v2wDFRB_1gZ73Gnl-2Xj2LfCIYiTHEAKD6-e7--hg63VIR-WJR_Q0ogV0-nYxGrXO2zZl8QE2Y_KA7Ej1c-JmbjEddBv3PJvzSTDEQyzi2PTuH6-S9fTpjz86XGECviFZgHjj2GCpTA7aGpwDz0Zw0ZwkECSEp8JpJGuABWDxcn4Di0xOyDVkOTsVEXto4W3hC4YXwbLY92e3O5RUMHkowhyRNg4sgWGJHmuURtikTp0tCZHlVkw-wa7TgQtfgp1Meq9B4Zi4-Swnj223W3ytlh7"
+    } ]
+  },
+  "default_max_age" : 240,
+  "application_type" : "type",
+  "default_acr_values" : [ "loa3", "loa4" ],
+  "initiate_login_uri" : "uri",
+  "logo_uri" : "https://example.com/logo",
+  "userinfo_encrypted_response_enc" : "alg",
+  "userinfo_encrypted_response_alg" : "alg",
+  "token_endpoint_auth_method" : "private_key_jwt",
+  "userinfo_signed_response_alg" : "alg",
+  "signed_jwks_uri" : "https://example.com/signed-jwks-uri",
+  "request_object_encryption_enc" : "alg",
+  "client_name" : "Client name",
+  "policy_uri" : "https://example.com/policy",
+  "id_token_signed_response_alg" : "alg",
+  "grant_types" : [ "type1", "type2" ],
+  "redirect_uris" : [ "Redirect URI", "Redirect URI2" ],
+  "organization_name" : "Organization",
+  "id_token_encrypted_response_alg" : "alg",
+  "jwks_uri" : "https://example.com/jwks-uri",
+  "require_auth_time" : true,
+  "contacts" : [ "nisse@example.com", "jd@example.com" ],
+  "response_types" : [ "Response types" ]
+}
+]]></system-err>
+  </testcase>
+  <testcase name="testFederationEndpointMetadata" classname="se.oidc.oidfed.md.entities.OidcFedMetadataTest" time="0.002"/>
+</testsuite>
