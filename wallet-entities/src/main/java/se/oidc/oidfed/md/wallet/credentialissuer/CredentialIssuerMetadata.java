@@ -89,7 +89,7 @@ public class CredentialIssuerMetadata implements LanguageTaggedJson {
   @JsonProperty("display")
   @Getter
   @Setter
-  protected Display display;
+  protected List<Display> display;
 
   @JsonProperty("credential_configurations_supported")
   @Getter
@@ -181,7 +181,7 @@ public class CredentialIssuerMetadata implements LanguageTaggedJson {
       return this;
     }
 
-    public CredentialIssuerMetadataBuilder display (Display display){
+    public CredentialIssuerMetadataBuilder display (List<Display> display){
       this.metadata.display = display;
       return this;
     }
