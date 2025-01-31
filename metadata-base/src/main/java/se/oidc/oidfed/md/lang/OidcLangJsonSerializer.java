@@ -15,12 +15,9 @@
  */
 package se.oidc.oidfed.md.lang;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.commons.lang3.StringUtils;
 import se.oidc.oidfed.md.MetadataUtils;
 
@@ -161,7 +158,7 @@ public class OidcLangJsonSerializer<T extends LanguageTaggedJson> {
       final Map<String, Object> languageObjectMap = new HashMap<>();
       for (final String correlatedKey : correlatedKeys) {
         final String lang = correlatedKey.substring(correlatedKey.indexOf("#") + 1);
-        if (StringUtils.isBlank(lang)) {
+        if (StringUtils.isNotBlank(lang)) {
           languageObjectMap.put(lang, languageTaggedMap.get(correlatedKey));
         }
         // Remove correlated key from consolidated map
@@ -198,7 +195,7 @@ public class OidcLangJsonSerializer<T extends LanguageTaggedJson> {
         .filter(key -> key.contains("#"))
         .forEach(key -> {
           final String propName = key.substring(0, key.indexOf("#"));
-          if (StringUtils.isBlank(propName)) {
+          if (StringUtils.isNotBlank(propName)) {
             if (!langKeyList.contains(propName)) {
               langKeyList.add(propName);
             }
