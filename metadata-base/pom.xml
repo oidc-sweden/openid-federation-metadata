@@ -10,6 +10,8 @@
     </parent>
 
     <artifactId>metadata-base</artifactId>
+    <version>1.1.0</version>
+
     <name>OIDC Sweden :: OID Federation Metadata :: Base</name>
     <description>Base support for federation metadata entities</description>
 
