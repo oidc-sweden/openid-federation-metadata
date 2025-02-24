@@ -6,10 +6,11 @@
     <parent>
         <groupId>se.oidc.oidfed.md</groupId>
         <artifactId>metadata-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </parent>
 
     <artifactId>metadata-base</artifactId>
+
     <name>OIDC Sweden :: OID Federation Metadata :: Base</name>
     <description>Base support for federation metadata entities</description>
 
@@ -22,7 +23,6 @@
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcpkix-jdk18on</artifactId>
-            <version>1.79</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -49,9 +49,14 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
+            <groupId>se.swedenconnect.security</groupId>
+            <artifactId>credentials-support</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.18.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

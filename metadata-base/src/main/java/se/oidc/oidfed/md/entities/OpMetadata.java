@@ -45,7 +45,7 @@ public class OpMetadata extends BasicASMetadata {
   @JsonProperty("client_registration_types_supported")
   @Getter
   @Setter
-  private List<List<?>> clientRegistrationTypesSupported;
+  private List<String> clientRegistrationTypesSupported;
 
   /**
    * OpenID Federation OPTIONAL. URL of the OP's federation-specific Dynamic Client Registration Endpoint. If the OP
@@ -57,31 +57,6 @@ public class OpMetadata extends BasicASMetadata {
   @Getter
   @Setter
   private String federationRegistrationEndpoint;
-
-  /**
-   * OpenID Federation OPTIONAL.The request_authentication_methods_supported value is a JSON object where the member
-   * names are names of endpoints where the request authentication occurs. This MAY be either at the OP's Authorization
-   * Endpoint or the OP's Pushed Authorization Request (PAR) endpoint. Supported endpoint identifiers are
-   * authorization_endpoint and pushed_authorization_request_endpoint. The values of the JSON object members for the
-   * endpoint names are JSON arrays containing the names of the request authentication methods used at those endpoints.
-   * Valid values are private_key_jwt, tls_client_auth, self_signed_tls_client_auth, request_object. Other values may be
-   * used.
-   */
-  @JsonProperty("request_authentication_methods_supported")
-  @Getter
-  @Setter
-  private Map<String, List<String>> requestAuthenticationMethodsSupported;
-
-  /**
-   * OpenID Federation OPTIONAL. JSON array containing a list of the supported JWS [RFC7515] algorithms (alg values) for
-   * signing the JWT [RFC7519] used in the Request Object contained in the request parameter of an authorization request
-   * or in the private_key_jwt of a pushed authorization request. This entry MUST be present if either of these
-   * authentication methods are specified in the request_authentication_methods_supported entry.
-   */
-  @JsonProperty("request_authentication_signing_alg_values_supported")
-  @Getter
-  @Setter
-  private List<String> requestAuthenticationSigningAlgValuesSupported;
 
   /**
    * RECOMMENDED. URL of the OP's UserInfo Endpoint [OpenID.Core]. This URL MUST use the https scheme and MAY contain
@@ -340,6 +315,16 @@ public class OpMetadata extends BasicASMetadata {
     /** {@inheritDoc} */
     @Override
     protected OpMetadataBuilder getReturnedBuilderInstance() {
+      return this;
+    }
+
+    public OpMetadataBuilder clientRegistrationTypesSupported(final List<String> clientRegistrationTypesSupported) {
+      this.metadata.clientRegistrationTypesSupported = clientRegistrationTypesSupported;
+      return this;
+    }
+
+    public OpMetadataBuilder federationRegistrationEndpoint(final String federationRegistrationEndpoint) {
+      this.metadata.federationRegistrationEndpoint = federationRegistrationEndpoint;
       return this;
     }
 
