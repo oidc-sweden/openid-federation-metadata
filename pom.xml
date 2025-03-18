@@ -6,7 +6,7 @@
 
     <groupId>se.oidc.oidfed.md</groupId>
     <artifactId>metadata-parent</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <packaging>pom</packaging>
 
     <name>OIDC Sweden :: OID Federation Metadata :: Parent</name>
