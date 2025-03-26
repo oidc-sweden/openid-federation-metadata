@@ -1,3 +1,8 @@
+/*
+ * // SPDX-FileCopyrightText: 2025 diggsweden/eudiw-wallet-token-lib
+ * //
+ * // SPDX-License-Identifier: Apache-2.0
+ */
 package se.oidc.oidfed.md.wallet.credentialissuer;
 
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -13,12 +13,50 @@
 
     <name>OIDC Sweden :: OID Federation Metadata :: Base</name>
     <description>Base support for federation metadata entities</description>
+    <url>https://github.com/oidc-sweden/openid-federation-metadata</url>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:https://github.com/oidc-sweden/openid-federation-metadata.git</connection>
+        <developerConnection>scm:https://github.com/oidc-sweden/openid-federation-metadata.git</developerConnection>
+        <url>https://github.com/oidc-sweden/openid-federation-metadata/tree/main</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Stefan Santesson</name>
+            <email>stefan@idsec.se</email>
+            <organization>IDsec Solutions AB</organization>
+            <organizationUrl>https://www.idsec.se</organizationUrl>
+        </developer>
+    </developers>
+
+    <organization>
+        <name>OIDC Sweden</name>
+        <url>https://www.oidc.se</url>
+    </organization>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.bouncycastle</groupId>
@@ -61,5 +99,21 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
