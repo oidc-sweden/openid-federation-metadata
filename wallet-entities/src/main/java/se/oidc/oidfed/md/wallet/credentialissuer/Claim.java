@@ -33,4 +33,6 @@ public class Claim {
   @JsonProperty("display")
   private List<Display> display;
 
+  @JsonProperty("path")
+  private List<Object> path; //MUST be a non-empty array of strings, nulls and non-negative integers
 }

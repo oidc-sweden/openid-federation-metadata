@@ -10,10 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Credential Configuration for IETF SD-JWT verifiable credentials
@@ -30,10 +27,10 @@ public class SdJwtCredentialConfiguration extends AbstractCredentialConfiguratio
   private String vct;
 
   /**
-   * OPTIONAL. Object containing a list of name/value pairs, where each name identifies a claim about the subject offered in the Credential.
+   * OPTIONAL. A list of claims offered in the Credential.
    */
   @JsonProperty("claims")
-  private Map<String, Object> claims;
+  private List<Claim> claims;
 
   /**
    * OPTIONAL. An array of the claim name values that lists them in the order they should be displayed by the Wallet.
@@ -60,7 +57,7 @@ public class SdJwtCredentialConfiguration extends AbstractCredentialConfiguratio
      * Sets the vct value in the SdJwtCredentialConfiguration and returns the builder instance.
      *
      * @param vct the verifiable credential type value to set
-     * @return the IsoMdlCredentialConfigurationBuilder instance
+     * @return the SdJwtCredentialConfigurationBuilder instance
      */
     public SdJwtCredentialConfigurationBuilder vct (String vct) {
       this.credentialConfiguration.setVct(vct);
@@ -68,12 +65,12 @@ public class SdJwtCredentialConfiguration extends AbstractCredentialConfiguratio
     }
 
     /**
-     * Sets the claims for the SdJwtCredentialConfiguration and returns the IsoMdlCredentialConfigurationBuilder instance.
+     * Sets the claims for the SdJwtCredentialConfiguration and returns the SdJwtCredentialConfigurationBuilder instance.
      *
-     * @param claims a map containing the list of name/value pairs for the claims
-     * @return the IsoMdlCredentialConfigurationBuilder instance
+     * @param claims a list of claims
+     * @return the SdJwtCredentialConfigurationBuilder instance
      */
-    public SdJwtCredentialConfigurationBuilder claims(Map<String, Object> claims) {
+    public SdJwtCredentialConfigurationBuilder claims(List<Claim> claims) {
       this.credentialConfiguration.setClaims(claims);
       return this;
     }
@@ -81,14 +78,13 @@ public class SdJwtCredentialConfiguration extends AbstractCredentialConfiguratio
     /**
      * Adds a claim to the credential configuration.
      *
-     * @param id the ID of the claim
      * @param claim the Claim object to be added
-     * @return the IsoMdlCredentialConfigurationBuilder instance
+     * @return the SdJwtCredentialConfigurationBuilder instance
      */
-    public SdJwtCredentialConfigurationBuilder claim(String id, Claim claim) {
-      Map<String, Object> claimMap = Optional.ofNullable(this.credentialConfiguration.getClaims()).orElse(new HashMap<>());
-      claimMap.put(id, claim);
-      this.credentialConfiguration.setClaims(claimMap);
+    public SdJwtCredentialConfigurationBuilder claim(Claim claim) {
+      List<Claim> claimList = Optional.ofNullable(this.credentialConfiguration.getClaims()).orElse(new ArrayList<>());
+      claimList.add(claim);
+      this.credentialConfiguration.setClaims(claimList);
       return this;
     }
 
@@ -96,7 +92,7 @@ public class SdJwtCredentialConfiguration extends AbstractCredentialConfiguratio
      * Sets the order of claims in display.
      *
      * @param order the list of claim names in the order they should be displayed
-     * @return the IsoMdlCredentialConfigurationBuilder instance
+     * @return the SdJwtCredentialConfigurationBuilder instance
      */
     public SdJwtCredentialConfigurationBuilder order(List<String> order) {
       this.credentialConfiguration.setOrder(order);

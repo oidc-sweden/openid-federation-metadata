@@ -10,10 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Credential Configuration for JSON LD verifiable credentials
@@ -87,11 +84,10 @@ public class JsonLdCredentialConfiguration extends AbstractCredentialConfigurati
     public List<String> type;
 
     /**
-     * Object containing a list of name/value pairs, where each name identifies a claim offered in the Credential. The value can be another
-     * such claim object (nested data structures), or an array of such claim objects.
+     * OPTIONAL. A list of claims offered in the Credential.
      */
-    @JsonProperty("credentialSubject")
-    public Map<String, Object> credentialSubject;
+    @JsonProperty("claims")
+    public List<Claim> claims;
 
     /**
      * Creates a new instance of JsonLdCredentialDefinitionBuilder.
@@ -135,29 +131,27 @@ public class JsonLdCredentialConfiguration extends AbstractCredentialConfigurati
       }
 
       /**
-       * Sets the credentialSubject field of the JsonLdCredentialDefinitionBuilder instance.
-       * If this function is used after setting values with "credentialSubjectClaim()", then these values will be lost.
+       * Sets the claims field of the JsonLdCredentialDefinitionBuilder instance.
+       * If this function is used after setting values with "claim()", then these values will be lost.
        *
-       * @param credentialSubject a Map representing the credential subject information
-       * @return the JsonLdCredentialDefinitionBuilder instance with the updated credentialSubject field
+       * @param claims a list representing the credential subject information
+       * @return the JsonLdCredentialDefinitionBuilder instance with the updated claims field
        */
-      public JsonLdCredentialDefinitionBuilder credentialSubject(Map<String, Object> credentialSubject) {
-        this.credentialDefinition.credentialSubject = credentialSubject;
+      public JsonLdCredentialDefinitionBuilder claims(List<Claim> claims) {
+        this.credentialDefinition.claims = claims;
         return this;
       }
 
       /**
-       * Sets a claim for the credential subject using the provided ID and claim object.
-       * If nested objects are required, then use "credentialSubject()" to set a complete Map structure with nested objects.
+       * Sets a claim for the credential subject.
        *
-       * @param claimName the name of the claim
        * @param claim the claim object containing information about the claim
        * @return the JsonLdCredentialDefinitionBuilder instance with the updated credentialSubject field
        */
-      public JsonLdCredentialDefinitionBuilder credentialSubjectClaim(String claimName, Claim claim) {
-        Map<String, Object> objectMap = Optional.ofNullable(this.credentialDefinition.credentialSubject).orElse(new HashMap<>());
-        objectMap.put(claimName, claim);
-        this.credentialDefinition.credentialSubject = objectMap;
+      public JsonLdCredentialDefinitionBuilder claim(Claim claim) {
+        List<Claim> claimList = Optional.ofNullable(this.credentialDefinition.getClaims()).orElse(new ArrayList<>());
+        claimList.add(claim);
+        this.credentialDefinition.setClaims(claimList);
         return this;
       }
 

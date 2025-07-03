@@ -8,7 +8,6 @@ package se.oidc.oidfed.md.wallet.credentialissuer;
 
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.crypto.ECDSASigner;
-import com.nimbusds.jose.jwk.ECKey;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import se.oidc.oidfed.md.wallet.data.TestCredentials;
@@ -44,7 +43,7 @@ class CredentialIssuerMetadataTest {
                 .logo(new Display.Image("https://example.com/logo", "Logo"))
                 .build()))
             .credentialConfiguration("SD_JWT_VC_example_in_OpenID4VCI", SdJwtCredentialConfiguration.builder()
-                .format("vc+sd-jwt")
+                .format("dc+sd-jwt")
                 .scope("SD_JWT_VC_example_in_OpenID4VCI")
                 .cryptographicBindingMethodsSupported(List.of("binding1", "binding2"))
                 .credentialSigningAlgValuesSupported(List.of("RS256", "ES256"))
@@ -60,7 +59,8 @@ class CredentialIssuerMetadataTest {
                         .textColor("#FFFFFF")
                         .build()))
                 .vct("SD_JWT_VC_example_in_OpenID4VCI")
-                .claim("given_name", Claim.builder()
+                .claim(Claim.builder()
+                        .path(List.of("given_name"))
                     .mandatory(true)
                     .valueType("text")
                     .display(List.of(
@@ -74,7 +74,8 @@ class CredentialIssuerMetadataTest {
                             .build()
                     ))
                     .build())
-                .claim("family_name", Claim.builder()
+                .claim(Claim.builder()
+                        .path(List.of("family_name"))
                     .mandatory(true)
                     .valueType("text")
                     .display(List.of(
@@ -125,7 +126,7 @@ class CredentialIssuerMetadataTest {
         .logo(new Display.Image("https://example.com/logo", "Logo"))
         .build()))
       .credentialConfiguration("org.iso.18013.5.1.mDL", IsoMdlCredentialConfiguration.builder()
-        .format("vc+sd-jwt")
+        .format("dc+sd-jwt")
         .scope("org.iso.18013.5.1.mDL")
         .cryptographicBindingMethodsSupported(List.of("binding1", "binding2"))
         .credentialSigningAlgValuesSupported(List.of("RS256", "ES256"))
@@ -141,7 +142,8 @@ class CredentialIssuerMetadataTest {
             .textColor("#FFFFFF")
             .build()))
         .doctype("org.iso.18013.5.1.mDL")
-        .claim("org.iso.18013.5.1","given_name", Claim.builder()
+        .claim(Claim.builder()
+          .path(List.of("org.iso.18013.5.1", "given_name"))
           .mandatory(true)
           .valueType("text")
           .display(List.of(
@@ -155,7 +157,8 @@ class CredentialIssuerMetadataTest {
             .build()
             ))
           .build())
-        .claim("org.iso.18013.5.1","family_name", Claim.builder()
+        .claim(Claim.builder()
+          .path(List.of("org.iso.18013.5.1", "family_name"))
           .mandatory(true)
           .valueType("text")
           .display(List.of(
@@ -169,7 +172,9 @@ class CredentialIssuerMetadataTest {
             .build()
             ))
           .build())
-        .claim("org.iso.18013.5.1.aamva", "organ_donor", new Claim())
+        .claim(Claim.builder()
+          .path(List.of("org.iso.18013.5.1.aamva", "organ_donor"))
+          .build())
         .order(List.of("given_name","family_name"))
         .build())
       .build();
@@ -216,7 +221,8 @@ class CredentialIssuerMetadataTest {
         .credentialDefinition(JsonLdCredentialConfiguration.JsonLdCredentialDefinition.builder()
           .context(List.of("https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1"))
           .type(List.of("VerifiableCredential","UniversityDegreeCredential"))
-          .credentialSubjectClaim("given_name", Claim.builder()
+          .claim(Claim.builder()
+            .path(List.of("credentialSubject", "given_name"))
             .mandatory(true)
             .valueType("text")
             .display(List.of(
@@ -230,7 +236,8 @@ class CredentialIssuerMetadataTest {
                 .build()
             ))
             .build())
-          .credentialSubjectClaim("family_name", Claim.builder()
+          .claim(Claim.builder()
+            .path(List.of("credentialSubject", "family_name"))
             .mandatory(true)
             .valueType("text")
             .display(List.of(
