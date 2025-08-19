@@ -27,9 +27,6 @@ public class Claim {
   @JsonProperty("mandatory")
   private Boolean mandatory;
 
-  @JsonProperty("value_type")
-  private String valueType;
-
   @JsonProperty("display")
   private List<Display> display;
 

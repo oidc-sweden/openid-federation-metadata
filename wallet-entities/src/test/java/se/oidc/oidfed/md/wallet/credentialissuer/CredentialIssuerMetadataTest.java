@@ -62,7 +62,6 @@ class CredentialIssuerMetadataTest {
                 .claim(Claim.builder()
                         .path(List.of("given_name"))
                     .mandatory(true)
-                    .valueType("text")
                     .display(List.of(
                         Display.builder()
                             .name("Given Name")
@@ -77,7 +76,6 @@ class CredentialIssuerMetadataTest {
                 .claim(Claim.builder()
                         .path(List.of("family_name"))
                     .mandatory(true)
-                    .valueType("text")
                     .display(List.of(
                         Display.builder()
                             .name("Surname")
@@ -145,7 +143,6 @@ class CredentialIssuerMetadataTest {
         .claim(Claim.builder()
           .path(List.of("org.iso.18013.5.1", "given_name"))
           .mandatory(true)
-          .valueType("text")
           .display(List.of(
             Display.builder()
             .name("Given Name")
@@ -160,7 +157,6 @@ class CredentialIssuerMetadataTest {
         .claim(Claim.builder()
           .path(List.of("org.iso.18013.5.1", "family_name"))
           .mandatory(true)
-          .valueType("text")
           .display(List.of(
             Display.builder()
             .name("Surname")
@@ -224,7 +220,6 @@ class CredentialIssuerMetadataTest {
           .claim(Claim.builder()
             .path(List.of("credentialSubject", "given_name"))
             .mandatory(true)
-            .valueType("text")
             .display(List.of(
               Display.builder()
                 .name("Given Name")
@@ -239,7 +234,6 @@ class CredentialIssuerMetadataTest {
           .claim(Claim.builder()
             .path(List.of("credentialSubject", "family_name"))
             .mandatory(true)
-            .valueType("text")
             .display(List.of(
               Display.builder()
                 .name("Surname")
