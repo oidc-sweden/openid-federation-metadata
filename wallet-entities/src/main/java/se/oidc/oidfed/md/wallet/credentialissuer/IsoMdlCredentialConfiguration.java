@@ -10,9 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -30,12 +29,10 @@ public class IsoMdlCredentialConfiguration extends AbstractCredentialConfigurati
   private String doctype;
 
   /**
-   * OPTIONAL. Object containing a list of name/value pairs, where the name is a certain namespace as defined in [ISO.18013-5] (or any
-   * profile of it), and the value is an object. This object also contains a list of name/value pairs, where the name is a claim name
-   * value that is defined in the respective namespace and is offered in the Credential..
+   * OPTIONAL. A list of claims offered in the Credential.
    */
   @JsonProperty("claims")
-  private Map<String, Map<String, Claim>> claims;
+  private List<Claim> claims;
 
   /**
    * OPTIONAL. Array of namespaced claim name values that lists them in the order they should be displayed by the Wallet. The values MUST be
@@ -74,17 +71,13 @@ public class IsoMdlCredentialConfiguration extends AbstractCredentialConfigurati
     /**
      * Adds a claim under a certain name space to the credential configuration.
      *
-     * @param nameSpace the name space of the claim
-     * @param claimName the ID of the claim
      * @param claim the Claim object to be added
      * @return the IsoMdlCredentialConfigurationBuilder instance
      */
-    public IsoMdlCredentialConfigurationBuilder claim(String nameSpace, String claimName, Claim claim) {
-      Map<String, Map<String, Claim>> nameSpaceMap = Optional.ofNullable(this.credentialConfiguration.getClaims()).orElse(new HashMap<>());
-      Map<String, Claim> claimMap = Optional.ofNullable(nameSpaceMap.get(nameSpace)).orElse(new HashMap<>());
-      claimMap.put(claimName, claim);
-      nameSpaceMap.put(nameSpace, claimMap);
-      this.credentialConfiguration.setClaims(nameSpaceMap);
+    public IsoMdlCredentialConfigurationBuilder claim(Claim claim) {
+      List<Claim> claimList = Optional.ofNullable(this.credentialConfiguration.getClaims()).orElse(new ArrayList<>());
+      claimList.add(claim);
+      this.credentialConfiguration.setClaims(claimList);
       return this;
     }
 
