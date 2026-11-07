@@ -32,7 +32,7 @@ class ExtendedMetadataTest {
 
     final Map<String, Object> metadataJsonObject = metadata.toJsonObject();
     log.info("Extended metadata:\n{}",
-        MetadataUtils.OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(metadataJsonObject));
+        MetadataUtils.JSON_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(metadataJsonObject));
 
     final ExtendedMetadata<OpMetadata> parsedMetadata =
         new ExtendedMetadata<>(metadataJsonObject, OpMetadata.getJsonSerializer());

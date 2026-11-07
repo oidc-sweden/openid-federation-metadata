@@ -8,7 +8,6 @@ package se.oidc.oidfed.md.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.nimbusds.jose.jwk.JWKSet;
 import lombok.Getter;
 import lombok.Setter;
@@ -130,17 +129,15 @@ public abstract class AbstractOidcFedMetadata implements LanguageTaggedJson {
    *
    * @param prettyPrinting set to true to get formatted JSON output
    * @return JSON string representing this metadata object
-   * @throws JsonProcessingException error processing metadata to JSON
    */
-  abstract public String toJson(boolean prettyPrinting) throws JsonProcessingException;
+  abstract public String toJson(boolean prettyPrinting);
 
   /**
    * Converts this metadata object to a JSON object
    *
    * @return metadata JSON object
-   * @throws JsonProcessingException error parsing metadata to a JSON object
    */
-  abstract public Map<String, Object> toJsonObject() throws JsonProcessingException;
+  abstract public Map<String, Object> toJsonObject();
 
   /**
    * Builder for this metadata object

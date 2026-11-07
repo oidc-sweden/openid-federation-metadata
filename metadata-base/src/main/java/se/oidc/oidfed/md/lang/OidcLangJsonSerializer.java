@@ -5,14 +5,14 @@
  */
 package se.oidc.oidfed.md.lang;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import se.oidc.oidfed.md.MetadataUtils;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
+import java.util.jar.JarException;
 
 /**
  * Instances of this class converts OIDC language tagged json to data classes where all language tagged data is
@@ -36,7 +36,7 @@ import java.util.*;
 public class OidcLangJsonSerializer<T extends LanguageTaggedJson> {
 
   private final List<String> targetDeclaredLangParameters;
-  private final ObjectMapper objectMapper;
+  private final JsonMapper jsonMapper;
 
   private final Class<T> targetClass;
 
@@ -48,17 +48,17 @@ public class OidcLangJsonSerializer<T extends LanguageTaggedJson> {
    * @param targetClass the target class for deserialization of language tagged JSON data
    */
   public OidcLangJsonSerializer(final Class<T> targetClass) {
-    this(targetClass, MetadataUtils.OBJECT_MAPPER);
+    this(targetClass, MetadataUtils.JSON_MAPPER);
   }
 
   /**
-   * Constructor with custom {@link ObjectMapper}
+   * Constructor with custom {@link JsonMapper}
    *
    * @param targetClass the target class for deserialization of language tagged JSON data
-   * @param objectMapper the object mapper used for serialization and deserialization of JSON
+   * @param jsonMapper the object mapper used for serialization and deserialization of JSON
    */
-  public OidcLangJsonSerializer(final Class<T> targetClass, final ObjectMapper objectMapper) {
-    this.objectMapper = objectMapper;
+  public OidcLangJsonSerializer(final Class<T> targetClass, final JsonMapper jsonMapper) {
+    this.jsonMapper = jsonMapper;
     this.targetClass = targetClass;
     try {
       this.targetDeclaredLangParameters = targetClass.getDeclaredConstructor()
@@ -87,11 +87,10 @@ public class OidcLangJsonSerializer<T extends LanguageTaggedJson> {
    *
    * @param languageTaggedJson JSON string which may contain language tagged data
    * @return target object storing language tagged data in {@link LanguageObject}
-   * @throws JsonProcessingException error to parse JSON data
    */
-  public T parse(final String languageTaggedJson) throws JsonProcessingException {
+  public T parse(final String languageTaggedJson) {
     final Map<String, Object> languageTaggedJsonObject =
-        this.objectMapper.readValue(languageTaggedJson, new TypeReference<>() {
+        this.jsonMapper.readValue(languageTaggedJson, new TypeReference<>() {
         });
     return this.parse(languageTaggedJsonObject);
   }
@@ -101,12 +100,11 @@ public class OidcLangJsonSerializer<T extends LanguageTaggedJson> {
    *
    * @param languageTaggedJsonObject JSON object
    * @return target object storing language tagged data in {@link LanguageObject}
-   * @throws JsonProcessingException JsonProcessingException error to parse JSON data
    */
-  public T parse(final Map<String, Object> languageTaggedJsonObject) throws JsonProcessingException {
+  public T parse(final Map<String, Object> languageTaggedJsonObject) {
     final Map<String, Object> stringObjectMap = this.consolidateLanguageTags(languageTaggedJsonObject);
-    return this.objectMapper.readValue(
-        this.objectMapper.writeValueAsString(stringObjectMap), this.targetClass);
+    return this.jsonMapper.readValue(
+        this.jsonMapper.writeValueAsString(stringObjectMap), this.targetClass);
   }
 
   /**
@@ -194,10 +192,10 @@ public class OidcLangJsonSerializer<T extends LanguageTaggedJson> {
     return langKeyList;
   }
 
-  public String toJson(final T serlizingObject) throws JsonProcessingException {
+  public String toJson(final T serlizingObject) {
     // Start with serializing the object to JSON object map
-    final String primaryJson = this.objectMapper.writeValueAsString(serlizingObject);
-    final Map<String, Object> primaryJsonObject = this.objectMapper.readValue(primaryJson, new TypeReference<>() {
+    final String primaryJson = this.jsonMapper.writeValueAsString(serlizingObject);
+    final Map<String, Object> primaryJsonObject = this.jsonMapper.readValue(primaryJson, new TypeReference<>() {
     });
     final Map<String, Object> serializedJsonObject = new HashMap<>(primaryJsonObject);
 
@@ -210,8 +208,8 @@ public class OidcLangJsonSerializer<T extends LanguageTaggedJson> {
         if (!(langObject instanceof Map)) {
           throw new RuntimeException("Object listed as language tagged is not a Map");
         }
-        final LanguageObject<?> parsedLangObject = this.objectMapper.readValue(
-            this.objectMapper.writeValueAsString(langObject),
+        final LanguageObject<?> parsedLangObject = this.jsonMapper.readValue(
+            this.jsonMapper.writeValueAsString(langObject),
             LanguageObject.class
         );
         // Now convert the parsed Language data object to individual parameters in the primary JSON object
@@ -230,13 +228,13 @@ public class OidcLangJsonSerializer<T extends LanguageTaggedJson> {
     }
     // Now serialize the language tagged serialization object map
     if (this.prettyPrinting) {
-      return this.objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(serializedJsonObject);
+      return this.jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(serializedJsonObject);
     }
-    return this.objectMapper.writeValueAsString(serializedJsonObject);
+    return this.jsonMapper.writeValueAsString(serializedJsonObject);
   }
 
-  public Map<String, Object> toJsonObject(final T serializingObject) throws JsonProcessingException {
-    return this.objectMapper.readValue(this.toJson(serializingObject), new TypeReference<>() {
+  public Map<String, Object> toJsonObject(final T serializingObject) {
+    return this.jsonMapper.readValue(this.toJson(serializingObject), new TypeReference<>() {
         }
     );
   }

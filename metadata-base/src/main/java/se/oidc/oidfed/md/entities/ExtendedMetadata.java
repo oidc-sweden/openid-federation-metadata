@@ -5,7 +5,6 @@
  */
 package se.oidc.oidfed.md.entities;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Getter;
 import lombok.Setter;
 import se.oidc.oidfed.md.MetadataUtils;
@@ -30,10 +29,8 @@ public class ExtendedMetadata<T extends AbstractOidcFedMetadata> {
    *
    * @param metadataJsonObject JSON object of the complete metadata with extended parameters
    * @param jsonSerializer serializer for the base metadata type
-   * @throws JsonProcessingException error processing json data
    */
-  public ExtendedMetadata(final Map<String, Object> metadataJsonObject, final OidcLangJsonSerializer<T> jsonSerializer)
-      throws JsonProcessingException {
+  public ExtendedMetadata(final Map<String, Object> metadataJsonObject, final OidcLangJsonSerializer<T> jsonSerializer) {
     this.baseMetadata = jsonSerializer.parse(metadataJsonObject);
     this.extendedParameters = MetadataUtils.getExtensionProperties(metadataJsonObject, this.baseMetadata);
   }
@@ -62,9 +59,8 @@ public class ExtendedMetadata<T extends AbstractOidcFedMetadata> {
    * Converts the extended metadata to a JSON object
    *
    * @return JSON object
-   * @throws JsonProcessingException error processing JSON data
    */
-  public Map<String, Object> toJsonObject() throws JsonProcessingException {
+  public Map<String, Object> toJsonObject() {
     final Map<String, Object> baseMetadataObject = this.baseMetadata != null
         ? this.baseMetadata.toJsonObject()
         : new HashMap<>();

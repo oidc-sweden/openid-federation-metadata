@@ -8,7 +8,6 @@ package se.oidc.oidfed.md.wallet.credentialissuer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
@@ -107,13 +106,22 @@ public class CredentialIssuerMetadata implements LanguageTaggedJson {
     this.languageTaggedParameters = List.of();
   }
 
-  /** {@inheritDoc} */
-  public String toJson(final boolean prettyPrinting) throws JsonProcessingException {
+  /**
+   * Converts this metadata object to a JSON string.
+   *
+   * @param prettyPrinting set to true to get formatted JSON output
+   * @return JSON string representing this metadata object
+   */
+  public String toJson(final boolean prettyPrinting) {
     return jsonSerializer.setPrettyPrinting(prettyPrinting).toJson(this);
   }
 
-  /** {@inheritDoc} */
-  public Map<String, Object> toJsonObject() throws JsonProcessingException {
+  /**
+   * Converts this metadata object to a JSON object.
+   *
+   * @return metadata JSON object
+   */
+  public Map<String, Object> toJsonObject() {
     return jsonSerializer.toJsonObject(this);
   }
 
@@ -216,12 +224,11 @@ public class CredentialIssuerMetadata implements LanguageTaggedJson {
      * @param kid the key identifier (kid) to include in the JWT header
      * @return a {@link CredentialIssuerMetadata} object with signed metadata
      * @throws JOSEException if an error occurs while signing the metadata
-     * @throws JsonProcessingException if an error occurs while processing metadata as JSON
      * @throws CertificateEncodingException if an error occurs while encoding the certificate chain
      */
     public CredentialIssuerMetadata buildWithSignedMetadata(@Nonnull final JWSSigner signer,
         @Nonnull final JWSAlgorithm algorithm, @Nullable final String kid)
-        throws JOSEException, JsonProcessingException, CertificateEncodingException {
+        throws JOSEException, CertificateEncodingException {
       return this.buildWithSignedMetadata(signer, algorithm, kid, null);
     }
 
@@ -235,12 +242,11 @@ public class CredentialIssuerMetadata implements LanguageTaggedJson {
      * @param chain the certificate chain to include in the JWT header
      * @return a {@link CredentialIssuerMetadata} object with signed metadata
      * @throws JOSEException if an error occurs during the signing process
-     * @throws JsonProcessingException if an error occurs while converting metadata to JSON
      * @throws CertificateEncodingException if an error occurs while encoding the certificate chain
      */
     public CredentialIssuerMetadata buildWithSignedMetadata(@Nonnull final JWSSigner signer,
         @Nonnull final JWSAlgorithm algorithm, @Nullable final List<X509Certificate> chain)
-        throws JOSEException, JsonProcessingException, CertificateEncodingException {
+        throws JOSEException, CertificateEncodingException {
       return this.buildWithSignedMetadata(signer, algorithm, null, chain);
     }
 
@@ -256,13 +262,12 @@ public class CredentialIssuerMetadata implements LanguageTaggedJson {
      *     added
      * @return a {@link CredentialIssuerMetadata} object containing the signed metadata
      * @throws JOSEException if an error occurs during the signing process
-     * @throws JsonProcessingException if an error occurs while converting metadata to JSON
      * @throws CertificateEncodingException if an error occurs while encoding the certificate chain
      */
     public CredentialIssuerMetadata buildWithSignedMetadata(@Nonnull final JWSSigner signer,
         @Nonnull final JWSAlgorithm algorithm, @Nullable final String kid,
         @Nullable final List<X509Certificate> chain)
-        throws JOSEException, JsonProcessingException, CertificateEncodingException {
+        throws JOSEException, CertificateEncodingException {
 
       final JWTClaimsSet.Builder claimsSetBuilder = new JWTClaimsSet.Builder()
           .issuer(this.metadata.getCredentialIssuer())

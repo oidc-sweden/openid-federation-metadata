@@ -5,9 +5,6 @@
  */
 package se.oidc.oidfed.md;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
@@ -15,6 +12,9 @@ import org.junit.jupiter.api.Test;
 import se.oidc.oidfed.md.lang.GenericLangTarget;
 import se.oidc.oidfed.md.lang.OidcLangJsonSerializer;
 import se.oidc.oidfed.md.testdata.LangTestTarget;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.exc.MismatchedInputException;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class OidcLangJsonSerializerTest {
 
   static String langTestJson1;
-  static final ObjectMapper OBJECT_MAPPER = MetadataUtils.getOidcObjectMapper();
+  static final JsonMapper JSON_MAPPER = MetadataUtils.getOidcObjectMapper();
 
   @BeforeAll
   static void init() throws Exception {
@@ -55,12 +55,12 @@ class OidcLangJsonSerializerTest {
         new OidcLangJsonSerializer<>(GenericLangTarget.class);
     final String genericConvertedJson = this.genericConvertToJsonObject(genericConverter, List.of());
     log.info("Generic converted JSON without explicit lang parameter list\n{}", genericConvertedJson);
-    final MismatchedInputException mismatchedInputException = assertThrows(MismatchedInputException.class, () -> OBJECT_MAPPER.readValue(genericConvertedJson, LangTestTarget.class));
+    final MismatchedInputException mismatchedInputException = assertThrows(MismatchedInputException.class, () -> JSON_MAPPER.readValue(genericConvertedJson, LangTestTarget.class));
     log.info("Expected exception from deserialization of illegal JSON: {}", mismatchedInputException.getMessage());
 
     final String adaptedConvertedJson = this.genericConvertToJsonObject(genericConverter, List.of("lang_onlydef"));
     log.info("Generic converted JSON with explicit lang parameter list\n{}", adaptedConvertedJson);
-    final LangTestTarget adaptedTarget = OBJECT_MAPPER.readValue(adaptedConvertedJson, LangTestTarget.class);
+    final LangTestTarget adaptedTarget = JSON_MAPPER.readValue(adaptedConvertedJson, LangTestTarget.class);
     assertEquals("Default value", adaptedTarget.getLangOnlyDefault().getDefaultValue());
     log.info("Deserialization success");
   }
@@ -68,9 +68,9 @@ class OidcLangJsonSerializerTest {
   private String genericConvertToJsonObject(final OidcLangJsonSerializer<GenericLangTarget> genericConverter,
       final List<String> langParams) throws Exception {
     final Map<String, Object> convertPresent = genericConverter.consolidateLanguageTags(
-        OBJECT_MAPPER.readValue(langTestJson1, new TypeReference<>() {
+        JSON_MAPPER.readValue(langTestJson1, new TypeReference<>() {
         }), langParams);
-    return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(convertPresent);
+    return JSON_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(convertPresent);
   }
 
 }

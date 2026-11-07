@@ -7,7 +7,6 @@ package se.oidc.oidfed.md.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Getter;
 import lombok.Setter;
 import se.oidc.oidfed.md.lang.OidcLangJsonSerializer;
@@ -61,13 +60,13 @@ public class ClientMetadata extends BasicClientMetadata {
 
   /** {@inheritDoc} */
   @Override
-  public String toJson(final boolean prettyPrinting) throws JsonProcessingException {
+  public String toJson(final boolean prettyPrinting) {
     return jsonSerializer.setPrettyPrinting(prettyPrinting).toJson(this);
   }
 
   /** {@inheritDoc} */
   @Override
-  public Map<String, Object> toJsonObject() throws JsonProcessingException {
+  public Map<String, Object> toJsonObject() {
     return jsonSerializer.toJsonObject(this);
   }
 
