@@ -114,6 +114,8 @@ public class FederationEntityMetadata extends AbstractOidcFedMetadata {
    * used.
    */
   @JsonProperty("endpoint_auth_signing_alg_values_supported")
+  @Getter
+  @Setter
   private List<String> endpointAuthSigningAlgValuesSupported;
 
   /** {@inheritDoc} */

@@ -49,10 +49,14 @@ public abstract class AbstractOidcFedMetadata implements LanguageTaggedJson {
   @Setter
   protected String policyUri;
 
-  @JsonProperty("homepage_uri")
+  /**
+   * URL of a Web page for the organization owning this Entity. Section 5.2.2 of OpenID Federation 1.0, which renamed
+   * this parameter from {@code homepage_uri}.
+   */
+  @JsonProperty("organization_uri")
   @Getter
   @Setter
-  protected String homepageUri;
+  protected String organizationUri;
 
   @JsonProperty("signed_jwks_uri")
   @Getter
@@ -180,8 +184,8 @@ public abstract class AbstractOidcFedMetadata implements LanguageTaggedJson {
       return this.getReturnedBuilderInstance();
     }
 
-    public B homepageUri(final String homepageUri) {
-      this.metadata.homepageUri = homepageUri;
+    public B organizationUri(final String organizationUri) {
+      this.metadata.organizationUri = organizationUri;
       return this.getReturnedBuilderInstance();
     }
 
