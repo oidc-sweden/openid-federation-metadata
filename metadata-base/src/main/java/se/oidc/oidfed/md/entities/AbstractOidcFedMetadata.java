@@ -58,6 +58,18 @@ public abstract class AbstractOidcFedMetadata implements LanguageTaggedJson {
   @Setter
   protected String organizationUri;
 
+  /**
+   * A unique identifier for the organization that owns this Entity, defined by OpenID Federation Organization
+   * Identifier Metadata Parameter 1.0. The value is a GLUE-URI using ISO/IEC 6523 representation,
+   * {@code urn:glue:iso6523:<icd>:<organization-number>}. Swedish organization numbers use the International Code
+   * Designator {@code 0007} and are given as ten digits without a hyphen, for example
+   * {@code urn:glue:iso6523:0007:2021006883}.
+   */
+  @JsonProperty("organization_identifier")
+  @Getter
+  @Setter
+  protected String organizationIdentifier;
+
   @JsonProperty("signed_jwks_uri")
   @Getter
   @Setter
@@ -186,6 +198,11 @@ public abstract class AbstractOidcFedMetadata implements LanguageTaggedJson {
 
     public B organizationUri(final String organizationUri) {
       this.metadata.organizationUri = organizationUri;
+      return this.getReturnedBuilderInstance();
+    }
+
+    public B organizationIdentifier(final String organizationIdentifier) {
+      this.metadata.organizationIdentifier = organizationIdentifier;
       return this.getReturnedBuilderInstance();
     }
 

@@ -84,6 +84,8 @@ class MetadataTests {
   void testRelyingPartyMetadata() throws Exception {
 
     final RelyingPartyMetadata relyingPartyMetadata = RelyingPartyMetadata.builder()
+        .clientRegistrationTypes(List.of("automatic"))
+        .organizationIdentifier("urn:glue:iso6523:0007:2021006883")
         .requireAuthTime(true)
         .defaultMaxAge(240)
         .applicationType("type")
@@ -128,9 +130,18 @@ class MetadataTests {
     assertNotNull(relyingPartyMetadata);
     this.logMetadataValues(relyingPartyMetadata);
 
+    final Map<String, Object> rpJsonObject = relyingPartyMetadata.toJsonObject();
+    // Required for an openid_relying_party by Section 5.1.2 of OpenID Federation 1.0
+    assertEquals(List.of("automatic"), rpJsonObject.get("client_registration_types"));
+    // OpenID Federation Organization Identifier Metadata Parameter 1.0
+    assertEquals("urn:glue:iso6523:0007:2021006883", rpJsonObject.get("organization_identifier"));
+
     log.info("Parsing metadata JSON object");
     final RelyingPartyMetadata parsedMetadata = RelyingPartyMetadata.getJsonSerializer()
-        .parse(relyingPartyMetadata.toJsonObject());
+        .parse(rpJsonObject);
+
+    assertEquals(List.of("automatic"), parsedMetadata.getClientRegistrationTypes());
+    assertEquals("urn:glue:iso6523:0007:2021006883", parsedMetadata.getOrganizationIdentifier());
 
     // Test JWKS
     final JWKSet jwkSet = parsedMetadata.getJwkSet();

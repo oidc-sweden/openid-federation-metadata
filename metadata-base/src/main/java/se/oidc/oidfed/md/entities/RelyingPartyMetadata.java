@@ -25,6 +25,15 @@ public class RelyingPartyMetadata extends BasicClientMetadata {
       new OidcLangJsonSerializer<>(RelyingPartyMetadata.class);
 
   /**
+   * REQUIRED. The registration types the Relying Party supports, according to Section 5.1.2 of OpenID Federation 1.0.
+   * The defined values are {@code automatic} and {@code explicit}.
+   */
+  @JsonProperty("client_registration_types")
+  @Getter
+  @Setter
+  private List<String> clientRegistrationTypes;
+
+  /**
    * OPTIONAL. Kind of the application. The default, if omitted, is web. The defined values are native or web. Web
    * Clients using the OAuth Implicit Grant Type MUST only register URLs using the https scheme as redirect_uris; they
    * MUST NOT use localhost as the hostname. Native Clients MUST only register redirect_uris using custom URI schemes or
@@ -259,6 +268,11 @@ public class RelyingPartyMetadata extends BasicClientMetadata {
     /** {@inheritDoc} */
     @Override
     protected RelyingPartyMetadataBuilder getReturnedBuilderInstance() {
+      return this;
+    }
+
+    public RelyingPartyMetadataBuilder clientRegistrationTypes(final List<String> clientRegistrationTypes) {
+      this.metadata.clientRegistrationTypes = clientRegistrationTypes;
       return this;
     }
 
